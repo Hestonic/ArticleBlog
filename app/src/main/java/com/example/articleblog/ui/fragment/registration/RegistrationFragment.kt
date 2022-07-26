@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.articleblog.databinding.FragmentRegistrationBinding
 
 class RegistrationFragment : Fragment() {
@@ -16,6 +17,12 @@ class RegistrationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentRegistrationBinding.inflate(inflater, container, false)
+        binding.login.setOnClickListener { navigateToLoginFragment() }
         return binding.root
+    }
+    
+    private fun navigateToLoginFragment() {
+        val action = RegistrationFragmentDirections.actionRegistrationFragmentToLoginFragment()
+        findNavController().navigate(action)
     }
 }
