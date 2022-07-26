@@ -4,5 +4,8 @@
     <string name="login">login</string>
     <string name="password">password</string>
     <string name="registration"><u>registration</u></string>
-    <string name="log_in">Log in</string>
+    <string name="log_in">log in</string>
+    <string name="log_in_underline"><u>log in</u></string>
+    <string name="register">register</string>
+    <string name="email">email</string>
 </resources>
