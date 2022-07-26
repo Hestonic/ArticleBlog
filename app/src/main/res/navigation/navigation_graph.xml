@@ -11,6 +11,9 @@
         <action
             android:id="@+id/action_loginFragment_to_registrationFragment"
             app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_articlesFragment"
+            app:destination="@id/articlesFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
@@ -20,4 +23,8 @@
             android:id="@+id/action_registrationFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/articlesFragment"
+        android:name="com.example.articleblog.ui.fragment.articles.ArticlesFragment"
+        android:label="ArticlesFragment" />
 </navigation>

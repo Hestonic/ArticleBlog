@@ -17,11 +17,17 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
-        binding.registration.setOnClickListener { navigateToRegistration() }
+        binding.registration.setOnClickListener { navigateToRegistrationFragment() }
+        binding.loginButton.setOnClickListener { navigateToArticlesFragment() }
         return binding.root
     }
     
-    private fun navigateToRegistration() {
+    private fun navigateToArticlesFragment() {
+        val action = LoginFragmentDirections.actionLoginFragmentToArticlesFragment()
+        findNavController().navigate(action)
+    }
+    
+    private fun navigateToRegistrationFragment() {
         val action = LoginFragmentDirections.actionLoginFragmentToRegistrationFragment()
         findNavController().navigate(action)
     }
