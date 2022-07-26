@@ -8,4 +8,10 @@
     <string name="log_in_underline"><u>log in</u></string>
     <string name="register">register</string>
     <string name="email">email</string>
+    <string name="article_name">Название статьи</string>
+    <string name="text">Его брат Ричард, в начале XVI века бежали ко двору императора СвященнойРимской империи, став пешками в международной политике. Существовали также другие родас таким прозванием, но неизвестно, находятся ли они в родстве.</string>
+    <string name="eye_value">115</string>
+    <string name="like_value">24</string>
+    <string name="categories"><u>Категория</u></string>
+    <string name="read"><u>Прочитать</u></string>
 </resources>
