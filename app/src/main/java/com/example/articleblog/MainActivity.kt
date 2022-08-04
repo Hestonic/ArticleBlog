@@ -1,11 +1,7 @@
 package com.example.articleblog
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.appcompat.app.AppCompatActivity
 import com.example.articleblog.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
