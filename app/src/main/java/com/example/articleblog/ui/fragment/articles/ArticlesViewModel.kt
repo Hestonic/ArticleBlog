@@ -13,5 +13,29 @@ import kotlinx.coroutines.launch
 
 class ArticlesViewModel(private val getArticlesUseCase: GetArticlesUseCase) : ViewModel() {
     
-
+    private val _articlesLiveData: MutableLiveData<ArticlesUiModel> = MutableLiveData()
+    val articlesLiveData: LiveData<ArticlesUiModel> get() = _articlesLiveData
+    
+    fun getArticles() {
+        viewModelScope.launch {
+            getArticlesUseCase.getArticles()?.let { articlesDTO ->
+                val articlesList = articlesDTO.articlesList.map { articleDTO ->
+                    ArticleUiModel(
+                        id = articleDTO.id,
+                        tittle = articleDTO.tittle,
+                        text = articleDTO.text,
+                        categories = articleDTO.categories.map { categoryDTO ->
+                            CategoryUiModel(id = categoryDTO.id, categoryDTO.category)
+                        },
+                        articleInfo = ArticleInfoUiModel(
+                            id = articleDTO.articleInfo.id,
+                            likes = articleDTO.articleInfo.likes.toString(),
+                            views = articleDTO.articleInfo.views.toString()
+                        ),
+                    )
+                }
+                _articlesLiveData.postValue(ArticlesUiModel(articlesList))
+            }
+        }
+    }
 }
