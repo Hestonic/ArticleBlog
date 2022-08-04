@@ -1,49 +1,95 @@
 package com.example.articleblog.ui.model
 
+data class ArticlesUiModel(
+    val articlesList: List<ArticleUiModel>,
+)
+
 data class ArticleUiModel(
-    val articleName: String,
-    val articleText: String,
-    val eyeValue: String,
-    val likeValue: String,
+    val id: Int,
+    val tittle: String,
+    val text: String,
+    val categories: List<CategoryUiModel>,
+    val articleInfo: ArticleInfoUiModel,
+)
+
+data class CategoryUiModel(
+    val id: Int,
+    val category: String,
+)
+
+data class ArticleInfoUiModel(
+    val id: Int,
+    val likes: String,
+    val views: String,
 )
 
 object Articles {
-    val articleList = listOf<ArticleUiModel>(
+    val articleList = listOf(
         ArticleUiModel(
-            articleName = "Ричард великий",
-            articleText = "Его брат Ричард, в начале XVI века бежали ко двору императора СвященнойРимской империи, став пешками в международной политике. Существовали также другие родас таким прозванием, но неизвестно, находятся ли они в родстве",
-            eyeValue = "115",
-            likeValue = "24",
+            id = 1,
+            tittle = "Ричард великий",
+            text = "Его брат Ричард, в начале XVI века бежали ко двору императора СвященнойРимской империи, став пешками в международной политике. Существовали также другие родас таким прозванием, но неизвестно, находятся ли они в родстве",
+            categories = listOf(
+                CategoryUiModel(id = 1, category = "History"),
+                CategoryUiModel(id = 2, category = "Biography"),
+                CategoryUiModel(id = 3, category = "Documentary"),
+            ),
+            articleInfo = ArticleInfoUiModel(id = 1, likes = "24", views = "438")
         ),
         ArticleUiModel(
-            articleName = "Ричард великий",
-            articleText = "Его брат Ричард, в начале XVI века бежали ко двору императора СвященнойРимской империи, став пешками в международной политике. Существовали также другие родас таким прозванием, но неизвестно, находятся ли они в родстве",
-            eyeValue = "115",
-            likeValue = "24",
+            id = 1,
+            tittle = "Ричард великий",
+            text = "Его брат Ричард, в начале XVI века бежали ко двору императора СвященнойРимской империи, став пешками в международной политике. Существовали также другие родас таким прозванием, но неизвестно, находятся ли они в родстве",
+            categories = listOf(
+                CategoryUiModel(id = 1, category = "History"),
+                CategoryUiModel(id = 2, category = "Biography"),
+                CategoryUiModel(id = 3, category = "Documentary"),
+            ),
+            articleInfo = ArticleInfoUiModel(id = 1, likes = "24", views = "438")
         ),
         ArticleUiModel(
-            articleName = "Ричард великий",
-            articleText = "Его брат Ричард, в начале XVI века бежали ко двору императора СвященнойРимской империи, став пешками в международной политике. Существовали также другие родас таким прозванием, но неизвестно, находятся ли они в родстве",
-            eyeValue = "115",
-            likeValue = "24",
+            id = 1,
+            tittle = "Ричард великий",
+            text = "Его брат Ричард, в начале XVI века бежали ко двору императора СвященнойРимской империи, став пешками в международной политике. Существовали также другие родас таким прозванием, но неизвестно, находятся ли они в родстве",
+            categories = listOf(
+                CategoryUiModel(id = 1, category = "History"),
+                CategoryUiModel(id = 2, category = "Biography"),
+                CategoryUiModel(id = 3, category = "Documentary"),
+            ),
+            articleInfo = ArticleInfoUiModel(id = 1, likes = "24", views = "438")
         ),
         ArticleUiModel(
-            articleName = "Ричард великий",
-            articleText = "Его брат Ричард, в начале XVI века бежали ко двору императора СвященнойРимской империи, став пешками в международной политике. Существовали также другие родас таким прозванием, но неизвестно, находятся ли они в родстве",
-            eyeValue = "115",
-            likeValue = "24",
+            id = 1,
+            tittle = "Ричард великий",
+            text = "Его брат Ричард, в начале XVI века бежали ко двору императора СвященнойРимской империи, став пешками в международной политике. Существовали также другие родас таким прозванием, но неизвестно, находятся ли они в родстве",
+            categories = listOf(
+                CategoryUiModel(id = 1, category = "History"),
+                CategoryUiModel(id = 2, category = "Biography"),
+                CategoryUiModel(id = 3, category = "Documentary"),
+            ),
+            articleInfo = ArticleInfoUiModel(id = 1, likes = "24", views = "438")
         ),
         ArticleUiModel(
-            articleName = "Ричард великий",
-            articleText = "Его брат Ричард, в начале XVI века бежали ко двору императора СвященнойРимской империи, став пешками в международной политике. Существовали также другие родас таким прозванием, но неизвестно, находятся ли они в родстве",
-            eyeValue = "115",
-            likeValue = "24",
+            id = 1,
+            tittle = "Ричард великий",
+            text = "Его брат Ричард, в начале XVI века бежали ко двору императора СвященнойРимской империи, став пешками в международной политике. Существовали также другие родас таким прозванием, но неизвестно, находятся ли они в родстве",
+            categories = listOf(
+                CategoryUiModel(id = 1, category = "History"),
+                CategoryUiModel(id = 2, category = "Biography"),
+                CategoryUiModel(id = 3, category = "Documentary"),
+            ),
+            articleInfo = ArticleInfoUiModel(id = 1, likes = "24", views = "438")
         ),
         ArticleUiModel(
-            articleName = "Ричард великий",
-            articleText = "Его брат Ричард, в начале XVI века бежали ко двору императора СвященнойРимской империи, став пешками в международной политике. Существовали также другие родас таким прозванием, но неизвестно, находятся ли они в родстве",
-            eyeValue = "115",
-            likeValue = "24",
+            id = 1,
+            tittle = "Ричард великий",
+            text = "Его брат Ричард, в начале XVI века бежали ко двору императора СвященнойРимской империи, став пешками в международной политике. Существовали также другие родас таким прозванием, но неизвестно, находятся ли они в родстве",
+            categories = listOf(
+                CategoryUiModel(id = 1, category = "History"),
+                CategoryUiModel(id = 2, category = "Biography"),
+                CategoryUiModel(id = 3, category = "Documentary"),
+            ),
+            articleInfo = ArticleInfoUiModel(id = 1, likes = "24", views = "438")
         ),
     )
 }
