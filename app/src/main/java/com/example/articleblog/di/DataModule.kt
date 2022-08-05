@@ -1,9 +1,11 @@
 package com.example.articleblog.di
 
+import android.content.Context
 import com.example.articleblog.data.repository.ArticlesRepositoryImpl
 import com.example.articleblog.data.repository.AuthorizationRepositoryImpl
 import com.example.articleblog.data.repository.UserRepositoryImpl
 import com.example.articleblog.data.source.RemoteDataSource
+import com.example.articleblog.data.source.local.SessionManager
 import com.example.articleblog.data.source.remote.ArticleService
 import com.example.articleblog.domain.repository.ArticlesRepository
 import com.example.articleblog.domain.repository.AuthorizationRepository
@@ -17,6 +19,11 @@ class DataModule {
     @Provides
     fun provideRemoteDataSource(api: ArticleService) : RemoteDataSource {
         return RemoteDataSource(api = api)
+    }
+    
+    @Provides
+    fun provideSessionManager(context: Context): SessionManager {
+        return SessionManager(context)
     }
     
     @Provides
