@@ -1,14 +1,13 @@
 package com.example.articleblog.di
 
 import com.example.articleblog.data.source.remote.ArticleService
-import com.example.articleblog.utils.Constants.Companion.BASE_URL
+import com.example.articleblog.utils.BaseUrl.Companion.BASE_URL
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Singleton
 
 @Module
 class NetworkModule {

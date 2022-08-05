@@ -5,6 +5,7 @@ import com.example.articleblog.data.source.remote.ArticleService
 import com.example.articleblog.data.source.remote.model.ArticlesResponse
 import com.example.articleblog.data.source.remote.model.LoginRequest
 import com.example.articleblog.data.source.remote.model.RegisterRequest
+import com.example.articleblog.data.source.remote.model.TokenResponse
 
 class RemoteDataSource(private val api: ArticleService) {
     
@@ -19,25 +20,33 @@ class RemoteDataSource(private val api: ArticleService) {
         }
     }
     
-    suspend fun loginUser(loginRequest: LoginRequest): String {
-        val userToken = api.loginUser(loginRequest)
-        return if (userToken.isSuccessful) {
-            Log.d("response", userToken.body().toString())
-            userToken.body() ?: ""
+    suspend fun loginUser(loginRequest: LoginRequest): TokenResponse {
+        val tokenResponse = api.loginUser(loginRequest)
+        return if (tokenResponse.isSuccessful) {
+            Log.d("response", tokenResponse.body().toString())
+            tokenResponse.body()!!
         } else {
-            Log.d("response", userToken.errorBody().toString())
-            ""
+            Log.d("response", tokenResponse.message())
+            TokenResponse(
+                token = "",
+                isError = true,
+                errorMessage = tokenResponse.message()
+            )
         }
     }
     
-    suspend fun registerUser(registerRequest: RegisterRequest): String {
-        val userToken = api.registerUser(registerRequest)
-        return if (userToken.isSuccessful) {
-            Log.d("response", userToken.body().toString())
-            userToken.body() ?: ""
+    suspend fun registerUser(registerRequest: RegisterRequest): TokenResponse {
+        val tokenResponse = api.registerUser(registerRequest)
+        return if (tokenResponse.isSuccessful) {
+            Log.d("response", tokenResponse.body().toString())
+            tokenResponse.body()!!
         } else {
-            Log.d("response", userToken.errorBody().toString())
-            ""
+            Log.d("response", tokenResponse.errorBody().toString())
+            TokenResponse(
+                token = "",
+                isError = true,
+                errorMessage = tokenResponse.message()
+            )
         }
     }
 }

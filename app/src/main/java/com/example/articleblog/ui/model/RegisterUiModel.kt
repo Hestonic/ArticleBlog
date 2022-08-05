@@ -1,4 +1,6 @@
 package com.example.articleblog.ui.model
 
-class RegisterUiModel {
-}
+data class RegisterUiModel(
+    val login: String,
+    val password: String,
+)
