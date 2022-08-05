@@ -6,7 +6,7 @@ import com.example.articleblog.domain.model.ArticleInfoDTO
 import com.example.articleblog.domain.model.ArticlesDTO
 import com.example.articleblog.domain.model.CategoryDTO
 
-object ArticlesMapper {
+object ArticlesMapperDTO {
     
     fun articlesResponseToDTO(articlesResponse: ArticlesResponse) : ArticlesDTO {
         val articlesList = articlesResponse.articlesList.map { articleResponse ->
