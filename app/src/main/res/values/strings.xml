@@ -16,4 +16,5 @@
     <string name="read"><u>Прочитать</u></string>
     <string name="like_value_label">количество лайков</string>
     <string name="eye_value_label">количество просмотров</string>
+    <string name="repeat_password">repeat password</string>
 </resources>
