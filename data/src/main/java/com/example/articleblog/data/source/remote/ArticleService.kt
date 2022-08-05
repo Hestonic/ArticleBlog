@@ -16,6 +16,6 @@ interface ArticleService {
     @POST("/api/login")
     suspend fun loginUser(@Body request: LoginRequest): Response<TokenResponse>
     
-    @POST("/api/login")
+    @POST("/api/register")
     suspend fun registerUser(@Body request: RegisterRequest): Response<TokenResponse>
 }
