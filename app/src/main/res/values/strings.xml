@@ -14,4 +14,6 @@
     <string name="like_value">24</string>
     <string name="categories"><u>Категория</u></string>
     <string name="read"><u>Прочитать</u></string>
+    <string name="like_value_label">количество лайков</string>
+    <string name="eye_value_label">количество просмотров</string>
 </resources>

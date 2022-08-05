@@ -23,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:text="@string/article_name"
+        android:lines="1"
         android:ellipsize="end"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -39,7 +40,7 @@
         android:lines="5"
         android:text="@string/text"
         android:textColor="@color/secondary_black"
-        android:textSize="12sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/article_name"
         app:layout_constraintTop_toBottomOf="@id/article_name" />
@@ -61,11 +62,12 @@
         app:layout_constraintStart_toStartOf="parent "
         app:layout_constraintTop_toBottomOf="@id/barrier" />
 
-    <com.google.android.material.imageview.ShapeableImageView
+    <ImageView
         android:id="@+id/ic_eye"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
+        android:layout_width="11dp"
+        android:layout_height="10dp"
         android:layout_marginEnd="4dp"
+        android:contentDescription="@string/eye_value_label"
         android:src="@drawable/ic_eye"
         app:layout_constraintBottom_toBottomOf="@id/categories"
         app:layout_constraintEnd_toStartOf="@id/eye_value"
@@ -92,7 +94,7 @@
         app:layout_constraintStart_toEndOf="@id/categories"
         app:layout_constraintTop_toTopOf="@id/eye_value" />
 
-    <com.google.android.material.imageview.ShapeableImageView
+    <ImageView
         android:id="@+id/ic_like"
         android:layout_width="15dp"
         android:layout_height="15dp"
@@ -100,7 +102,8 @@
         android:src="@drawable/ic_like"
         app:layout_constraintBottom_toBottomOf="@id/ic_eye"
         app:layout_constraintStart_toEndOf="@id/icon_space"
-        app:layout_constraintTop_toTopOf="@id/ic_eye" />
+        app:layout_constraintTop_toTopOf="@id/ic_eye"
+        android:contentDescription="@string/like_value_label" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/like_value"
