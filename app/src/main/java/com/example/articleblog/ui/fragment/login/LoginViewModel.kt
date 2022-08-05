@@ -1,6 +1,5 @@
 package com.example.articleblog.ui.fragment.login
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,10 +7,10 @@ import androidx.lifecycle.viewModelScope
 import com.example.articleblog.domain.usecase.LoginUserUseCase
 import com.example.articleblog.ui.mapper.AuthorizationMapperUI
 import com.example.articleblog.utils.Constants.Companion.BAD_REQUEST
+import com.example.articleblog.utils.Constants.Companion.NOT_FOUND
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
-import java.lang.Exception
 
 class LoginViewModel(private val loginUserUseCase: LoginUserUseCase) : ViewModel() {
     
@@ -40,9 +39,9 @@ class LoginViewModel(private val loginUserUseCase: LoginUserUseCase) : ViewModel
     private fun sendError(errorMessage: String) {
         viewModelScope.launch {
             when(errorMessage) {
+                NOT_FOUND -> loginFailedChannel.send("Ошибка соединения с сервером")
                 BAD_REQUEST -> loginFailedChannel.send("Неверный логин или пароль")
             }
         }
     }
-    
 }
