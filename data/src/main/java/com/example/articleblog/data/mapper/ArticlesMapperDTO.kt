@@ -1,10 +1,9 @@
 package com.example.articleblog.data.mapper
 
 import com.example.articleblog.data.source.remote.model.ArticlesResponse
-import com.example.articleblog.domain.model.ArticleDTO
-import com.example.articleblog.domain.model.ArticleInfoDTO
-import com.example.articleblog.domain.model.ArticlesDTO
-import com.example.articleblog.domain.model.CategoryDTO
+import com.example.articleblog.data.source.remote.model.LoginRequest
+import com.example.articleblog.data.source.remote.model.RegisterRequest
+import com.example.articleblog.domain.model.*
 
 object ArticlesMapperDTO {
     
@@ -26,4 +25,10 @@ object ArticlesMapperDTO {
         }
         return ArticlesDTO(articlesList = articlesList)
     }
+    
+    fun loginDtoToRequest(loginDTO: LoginDTO) =
+        LoginRequest(login = loginDTO.login, password = loginDTO.password)
+    
+    fun registerDtoToRequest(registerDTO: RegisterDTO) =
+        RegisterRequest(login =registerDTO.login, password =registerDTO.password)
 }
