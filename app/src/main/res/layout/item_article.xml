@@ -123,7 +123,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/read"
-        android:textColor="@color/yellow_primary"
+        android:textColor="@color/orange_dark"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@id/categories"
         app:layout_constraintEnd_toEndOf="parent" />
