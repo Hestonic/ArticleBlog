@@ -1,4 +1,4 @@
-package com.example.articleblog
+package com.example.articleblog.ui.fragment.article_details
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
