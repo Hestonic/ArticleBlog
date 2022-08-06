@@ -19,4 +19,5 @@
     <string name="eye_value_label">количество просмотров</string>
     <string name="repeat_password">repeat password</string>
     <string name="author_label">Автор:</string>
+    <string name="add_article_button">add article button</string>
 </resources>
