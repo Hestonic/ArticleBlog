@@ -22,4 +22,5 @@
     <string name="add_article_button">Add article button</string>
     <string name="title">Title</string>
     <string name="write_your_article_here">Write your article here…</string>
+    <string name="exit">Exit</string>
 </resources>
