@@ -12,9 +12,11 @@
     <string name="text">Его брат Ричард, в начале XVI века бежали ко двору императора СвященнойРимской империи, став пешками в международной политике. Существовали также другие родас таким прозванием, но неизвестно, находятся ли они в родстве.</string>
     <string name="eye_value">115</string>
     <string name="like_value">24</string>
-    <string name="categories"><u>Категория</u></string>
+    <string name="category_underline"><u>Категория</u></string>
+    <string name="category">Категория</string>
     <string name="read"><u>Прочитать</u></string>
     <string name="like_value_label">количество лайков</string>
     <string name="eye_value_label">количество просмотров</string>
     <string name="repeat_password">repeat password</string>
+    <string name="author_label">Автор:</string>
 </resources>

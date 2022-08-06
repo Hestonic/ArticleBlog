@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="20dp"
+    android:paddingVertical="10dp">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_category"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toStartOf="@id/ic_eye"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:itemCount="1"
+        tools:listitem="@layout/item_chips" />
+
+    <ImageView
+        android:id="@+id/ic_eye"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginEnd="6dp"
+        android:contentDescription="@string/eye_value_label"
+        android:src="@drawable/ic_eye"
+        app:layout_constraintBottom_toBottomOf="@id/eye_value"
+        app:layout_constraintEnd_toStartOf="@id/eye_value"
+        app:layout_constraintTop_toTopOf="@id/eye_value" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/eye_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="@string/eye_value"
+        android:textColor="@color/secondary_black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/ic_like"
+        app:layout_constraintEnd_toStartOf="@id/ic_like"
+        app:layout_constraintTop_toTopOf="@id/ic_like" />
+
+    <ImageView
+        android:id="@+id/ic_like"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginEnd="4dp"
+        android:contentDescription="@string/like_value_label"
+        android:src="@drawable/ic_like"
+        app:layout_constraintBottom_toBottomOf="@id/like_value"
+        app:layout_constraintEnd_toStartOf="@id/like_value"
+        app:layout_constraintTop_toTopOf="@id/like_value" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/like_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/like_value"
+        android:textColor="@color/secondary_black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/recycler_category"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="recycler_category, eye_value, like_value, ic_eye, ic_like" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/author_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/author_label"
+        android:textColor="@color/orange_dark"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/barrier" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:text="@string/login"
+        android:textColor="@color/orange_dark"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/author_label"
+        app:layout_constraintStart_toEndOf="@id/author_label"
+        app:layout_constraintTop_toTopOf="@id/author_label" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/article_name"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/author_label" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/text"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
