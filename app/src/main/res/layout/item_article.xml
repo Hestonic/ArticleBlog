@@ -64,8 +64,8 @@
 
     <ImageView
         android:id="@+id/ic_eye"
-        android:layout_width="11dp"
-        android:layout_height="10dp"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
         android:layout_marginEnd="4dp"
         android:contentDescription="@string/eye_value_label"
         android:src="@drawable/ic_eye"
