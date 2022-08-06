@@ -14,10 +14,12 @@
     <string name="like_value">24</string>
     <string name="category_underline"><u>Category</u></string>
     <string name="category">Category</string>
-    <string name="read"><u>Details...</u></string>
+    <string name="read"><u>Details…</u></string>
     <string name="like_value_label">Likes value</string>
     <string name="eye_value_label">Views value</string>
     <string name="repeat_password">Repeat password</string>
     <string name="author_label">Author:</string>
     <string name="add_article_button">Add article button</string>
+    <string name="title">Title</string>
+    <string name="write_your_article_here">Write your article here…</string>
 </resources>
