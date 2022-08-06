@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
     app:startDestination="@id/loginFragment">
 
@@ -33,5 +34,34 @@
     <fragment
         android:id="@+id/articlesFragment"
         android:name="com.example.articleblog.ui.fragment.articles.ArticlesFragment"
-        android:label="ArticlesFragment" />
+        android:label="ArticlesFragment" >
+        <action
+            android:id="@+id/action_articlesFragment_to_writeArticleFragment"
+            app:destination="@id/writeArticleFragment" />
+        <action
+            android:id="@+id/action_articlesFragment_to_articleDetailsFragment"
+            app:destination="@id/articleDetailsFragment" />
+        <action
+            android:id="@+id/action_articlesFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/articleDetailsFragment"
+        android:name="com.example.articleblog.ui.fragment.article_details.ArticleDetailsFragment"
+        android:label="ArticleDetailsFragment" />
+    <fragment
+        android:id="@+id/writeArticleFragment"
+        android:name="com.example.articleblog.ui.fragment.write_article.WriteArticleFragment"
+        android:label="fragment_write_article"
+        tools:layout="@layout/fragment_write_article" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.articleblog.ui.fragment.profile.ProfileFragment"
+        android:label="ProfileFragment" >
+        <action
+            app:popUpTo="@+id/navigation_graph"
+            app:popUpToInclusive="true"
+            android:id="@+id/action_profileFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>
