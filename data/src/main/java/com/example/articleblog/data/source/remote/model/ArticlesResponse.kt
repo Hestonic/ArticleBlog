@@ -1,10 +1,10 @@
 package com.example.articleblog.data.source.remote.model
 
 data class ArticlesResponse(
-    val articlesList: List<Article>,
+    val articlesList: List<ArticleResponse>,
 )
 
-data class Article(
+data class ArticleResponse(
     val id: Int,
     val tittle: String,
     val text: String,

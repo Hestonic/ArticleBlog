@@ -2,10 +2,7 @@ package com.example.articleblog.data.source
 
 import android.util.Log
 import com.example.articleblog.data.source.remote.ArticleService
-import com.example.articleblog.data.source.remote.model.ArticlesResponse
-import com.example.articleblog.data.source.remote.model.LoginRequest
-import com.example.articleblog.data.source.remote.model.RegisterRequest
-import com.example.articleblog.data.source.remote.model.TokenResponse
+import com.example.articleblog.data.source.remote.model.*
 
 class RemoteDataSource(private val api: ArticleService) {
     
@@ -16,6 +13,17 @@ class RemoteDataSource(private val api: ArticleService) {
             articlesResponse.body()
         } else {
             Log.d("response", articlesResponse.errorBody().toString())
+            null
+        }
+    }
+    
+    suspend fun getArticleById(id: String): ArticleResponse? {
+        val articleResponse = api.getArticleById(id)
+        return if (articleResponse.isSuccessful) {
+            Log.d("response", articleResponse.body().toString())
+            articleResponse.body()
+        } else {
+            Log.d("response", articleResponse.errorBody().toString())
             null
         }
     }

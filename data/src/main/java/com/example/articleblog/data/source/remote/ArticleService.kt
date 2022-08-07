@@ -1,17 +1,18 @@
 package com.example.articleblog.data.source.remote
 
-import com.example.articleblog.data.source.remote.model.ArticlesResponse
-import com.example.articleblog.data.source.remote.model.LoginRequest
-import com.example.articleblog.data.source.remote.model.RegisterRequest
-import com.example.articleblog.data.source.remote.model.TokenResponse
+import com.example.articleblog.data.source.remote.model.*
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface ArticleService {
     @GET("/api/articles")
     suspend fun getArticles(): Response<ArticlesResponse>
+    
+    @GET("/api/articles/{id}")
+    suspend fun getArticleById(@Path("id") id: String): Response<ArticleResponse>
     
     @POST("/api/login")
     suspend fun loginUser(@Body request: LoginRequest): Response<TokenResponse>
