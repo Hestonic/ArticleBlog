@@ -2,9 +2,7 @@ package com.example.articleblog.di
 
 import com.example.articleblog.domain.repository.ArticlesRepository
 import com.example.articleblog.domain.repository.AuthorizationRepository
-import com.example.articleblog.domain.usecase.GetArticlesUseCase
-import com.example.articleblog.domain.usecase.LoginUserUseCase
-import com.example.articleblog.domain.usecase.RegisterUserUseCase
+import com.example.articleblog.domain.usecase.*
 import dagger.Module
 import dagger.Provides
 
@@ -14,6 +12,11 @@ class DomainModule {
     @Provides
     fun provideGetArticlesUseCase(articlesRepository: ArticlesRepository): GetArticlesUseCase {
         return GetArticlesUseCase(articlesRepository = articlesRepository)
+    }
+    
+    @Provides
+    fun provideGetArticleUseCase(articlesRepository: ArticlesRepository): GetArticleByIdUseCase {
+        return GetArticleByIdUseCase(articlesRepository = articlesRepository)
     }
     
     @Provides

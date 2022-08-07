@@ -1,9 +1,8 @@
 package com.example.articleblog.di
 
 import android.content.Context
-import com.example.articleblog.domain.usecase.GetArticlesUseCase
-import com.example.articleblog.domain.usecase.LoginUserUseCase
-import com.example.articleblog.domain.usecase.RegisterUserUseCase
+import com.example.articleblog.domain.usecase.*
+import com.example.articleblog.ui.fragment.article_details.ArticleDetailsViewModelFactory
 import com.example.articleblog.ui.fragment.articles.ArticlesViewModelFactory
 import com.example.articleblog.ui.fragment.login.LoginViewModelFactory
 import com.example.articleblog.ui.fragment.registration.RegistrationViewModelFactory
@@ -21,6 +20,11 @@ class AppModule(val context: Context) {
     @Provides
     fun provideArticlesViewModelFactory(getArticlesUseCase: GetArticlesUseCase): ArticlesViewModelFactory {
         return ArticlesViewModelFactory(getArticlesUseCase = getArticlesUseCase)
+    }
+    
+    @Provides
+    fun provideArticleDetailsViewModelFactory(getArticleByIdUseCase: GetArticleByIdUseCase): ArticleDetailsViewModelFactory {
+        return ArticleDetailsViewModelFactory(getArticleByIdUseCase = getArticleByIdUseCase)
     }
     
     @Provides

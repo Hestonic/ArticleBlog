@@ -1,5 +1,6 @@
 package com.example.articleblog.di
 
+import com.example.articleblog.ui.fragment.article_details.ArticleDetailsFragment
 import com.example.articleblog.ui.fragment.articles.ArticlesFragment
 import com.example.articleblog.ui.fragment.login.LoginFragment
 import com.example.articleblog.ui.fragment.registration.RegistrationFragment
@@ -10,4 +11,5 @@ interface AppComponent {
     fun inject(articlesFragment: ArticlesFragment)
     fun inject(loginFragment: LoginFragment)
     fun inject(registrationFragment: RegistrationFragment)
+    fun inject(articleDetailsFragment: ArticleDetailsFragment)
 }
