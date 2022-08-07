@@ -6,16 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.articleblog.App
+import com.example.articleblog.R
 import com.example.articleblog.databinding.FragmentArticlesBinding
+import com.example.articleblog.data.source.local.SessionManager
 import javax.inject.Inject
 
 class ArticlesFragment : Fragment() {
     
     @Inject
     lateinit var articlesViewModelFactory: ArticlesViewModelFactory
-    
+    @Inject
+    lateinit var sessionManager: SessionManager
     private lateinit var viewModel: ArticlesViewModel
     private lateinit var binding: FragmentArticlesBinding
     private val adapter = ArticlesAdapter()
@@ -34,7 +38,26 @@ class ArticlesFragment : Fragment() {
         initViewModel()
         viewModel.getArticles()
         viewModel.articlesLiveData.observe(viewLifecycleOwner) { adapter.setData(it.articlesList) }
+        
+        binding.addArticleButton.setOnClickListener { navigateToWriteArticleFragment() }
+        binding.topToolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.menu_logout -> { logout() }
+            }
+            true
+        }
         return binding.root
+    }
+    
+    private fun logout() {
+        sessionManager.deleteAuthToken()
+        val action = ArticlesFragmentDirections.actionArticlesFragmentToLoginFragment()
+        findNavController().navigate(action)
+    }
+    
+    private fun navigateToWriteArticleFragment() {
+        val action = ArticlesFragmentDirections.actionArticlesFragmentToWriteArticleFragment()
+        findNavController().navigate(action)
     }
     
     private fun setupRecyclerview() {

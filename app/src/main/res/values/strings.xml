@@ -23,4 +23,5 @@
     <string name="title">Title</string>
     <string name="write_your_article_here">Write your article here…</string>
     <string name="exit">Exit</string>
+    <string name="log_out">Log out</string>
 </resources>

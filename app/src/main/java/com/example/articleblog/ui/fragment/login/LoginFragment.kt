@@ -10,8 +10,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.articleblog.App
-import com.example.articleblog.databinding.FragmentLoginBinding
 import com.example.articleblog.data.source.local.SessionManager
+import com.example.articleblog.databinding.FragmentLoginBinding
 import javax.inject.Inject
 
 class LoginFragment : Fragment() {
@@ -26,6 +26,7 @@ class LoginFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         (requireContext().applicationContext as App).appComponent.inject(this)
+        checkSession()
     }
     
     override fun onCreateView(
@@ -51,6 +52,11 @@ class LoginFragment : Fragment() {
         val login = binding.loginInput.text.toString()
         val password = binding.passwordInput.text.toString()
         viewModel.loginUser(login = login, password = password)
+    }
+    
+    private fun checkSession() {
+        val token = sessionManager.getAuthToken()
+        if (token != null && token.isNotEmpty()) navigateToArticlesFragment()
     }
     
     private fun initViewModel() {

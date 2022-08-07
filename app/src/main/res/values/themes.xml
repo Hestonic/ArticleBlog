@@ -12,7 +12,9 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <item name="android:textColor">@color/black</item>
+        <item name="titleTextColor">@color/white</item>
         <item name="cornerSize">50%</item>
+        <item name="colorControlNormal">@color/white</item>
     </style>
 
     <style name="Base.Theme.ArticleBlog" parent="Base.V26.Theme.ArticleBlog" />
