@@ -62,7 +62,7 @@ class ArticlesFragment : Fragment() {
             .create().show()
     }
     
-    fun logout() {
+    private fun logout() {
         sessionManager.deleteAuthToken()
         val action = ArticlesFragmentDirections.actionArticlesFragmentToLoginFragment()
         findNavController().navigate(action)
