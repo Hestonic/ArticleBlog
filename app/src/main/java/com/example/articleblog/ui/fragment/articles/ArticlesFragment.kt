@@ -58,7 +58,7 @@ class ArticlesFragment : Fragment() {
             .setNegativeButton("No") { _, _ ->
                 Toast.makeText(requireContext(), "Log out canceled", Toast.LENGTH_SHORT).show()
             }
-            .setPositiveButton("Хорошо") { _, _ -> logout() }
+            .setPositiveButton("Yes") { _, _ -> logout() }
             .create().show()
     }
     
