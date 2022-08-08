@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -39,7 +40,10 @@ class ArticlesFragment : Fragment() {
         setupRecyclerview()
         initViewModel()
         viewModel.getArticles()
-        viewModel.articlesLiveData.observe(viewLifecycleOwner) { adapter.setData(it.articlesList) }
+        viewModel.articlesLiveData.observe(viewLifecycleOwner) {
+            adapter.setData(it.articlesList)
+            setVisible()
+        }
         
         binding.addArticleButton.setOnClickListener { navigateToWriteArticleFragment() }
         binding.topToolbar.setOnMenuItemClickListener {
@@ -49,6 +53,11 @@ class ArticlesFragment : Fragment() {
             true
         }
         return binding.root
+    }
+    
+    private fun setVisible() {
+        binding.mainGroup.isVisible = true
+        binding.progressCircular.isVisible = false
     }
     
     private fun showLogoutAlertDialog() {
