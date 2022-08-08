@@ -25,4 +25,5 @@
     <string name="exit">Exit</string>
     <string name="log_out">Log out</string>
     <string name="save">Save</string>
+    <string name="publish">publish</string>
 </resources>
