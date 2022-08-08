@@ -26,4 +26,5 @@
     <string name="log_out">Log out</string>
     <string name="save">Save</string>
     <string name="publish">publish</string>
+    <string name="select_categories">Select categories</string>
 </resources>
