@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
@@ -16,7 +17,7 @@ import javax.inject.Inject
 class ArticleDetailsFragment : Fragment() {
     
     private lateinit var binding: FragmentArticleDetailsBinding
-    private val adapter = CategoryAdapter()
+    private val categoryAdapter = CategoryAdapter()
     private val args by navArgs<ArticleDetailsFragmentArgs>()
     private lateinit var viewModel: ArticleDetailsViewModel
     
@@ -35,16 +36,28 @@ class ArticleDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentArticleDetailsBinding.inflate(inflater, container, false)
+        setVisibleProgressBar()
         setupRecycler()
         viewModel.articleLiveData.observe(viewLifecycleOwner) { articleUiModel ->
             setUi(articleUiModel)
-            adapter.setData(articleUiModel.categories)
+            categoryAdapter.setData(articleUiModel.categories)
+            setVisibleContent()
         }
         return binding.root
     }
     
+    private fun setVisibleProgressBar() {
+        binding.contentGroup.isVisible = false
+        binding.progressCircular.isVisible = true
+    }
+    
+    private fun setVisibleContent() {
+        binding.contentGroup.isVisible = true
+        binding.progressCircular.isVisible = false
+    }
+    
     private fun setupRecycler() {
-        binding.recycler.adapter = adapter
+        binding.recycler.adapter = categoryAdapter
         binding.recycler.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
