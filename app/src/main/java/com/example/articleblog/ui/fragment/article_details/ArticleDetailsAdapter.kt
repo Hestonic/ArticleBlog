@@ -7,17 +7,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.articleblog.databinding.ItemChipsBinding
 import com.example.articleblog.ui.model.CategoryUiModel
 
-class CategoryAdapter : RecyclerView.Adapter<CategoryViewHolder>() {
+class ArticleDetailsAdapter : RecyclerView.Adapter<ArticleDetailsViewHolder>() {
     
     private var categoriesList: List<CategoryUiModel> = emptyList()
     
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleDetailsViewHolder {
         val binding =
             ItemChipsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return CategoryViewHolder(binding)
+        return ArticleDetailsViewHolder(binding)
     }
     
-    override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ArticleDetailsViewHolder, position: Int) {
         categoriesList.getOrNull(position)?.let { holder.bind(it) }
     }
     

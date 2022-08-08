@@ -17,7 +17,7 @@ import javax.inject.Inject
 class ArticleDetailsFragment : Fragment() {
     
     private lateinit var binding: FragmentArticleDetailsBinding
-    private val categoryAdapter = CategoryAdapter()
+    private val categoryAdapter = ArticleDetailsAdapter()
     private val args by navArgs<ArticleDetailsFragmentArgs>()
     private lateinit var viewModel: ArticleDetailsViewModel
     
