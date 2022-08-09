@@ -57,4 +57,15 @@ class RemoteDataSource(private val api: ArticleService) {
             )
         }
     }
+    
+    suspend fun getAllCategories(): List<CategoryResponse> {
+        val categoryResponse = api.getAllCategories()
+        return if (categoryResponse.isSuccessful) {
+            Log.d("response", categoryResponse.body().toString())
+            categoryResponse.body() ?: emptyList()
+        } else {
+            Log.d("response", categoryResponse.errorBody().toString())
+            emptyList()
+        }
+    }
 }

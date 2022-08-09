@@ -14,6 +14,9 @@ interface ArticleService {
     @GET("/api/articles/{id}")
     suspend fun getArticleById(@Path("id") id: String): Response<ArticleResponse>
     
+    @GET("/api/categories")
+    suspend fun getAllCategories(): Response<List<CategoryResponse>>
+    
     @POST("/api/login")
     suspend fun loginUser(@Body request: LoginRequest): Response<TokenResponse>
     

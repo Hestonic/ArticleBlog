@@ -8,16 +8,16 @@ data class ArticleResponse(
     val id: Int,
     val tittle: String,
     val text: String,
-    val categories: List<Category>,
-    val articleInfo: ArticleInfo,
+    val categories: List<CategoryResponse>,
+    val articleInfo: ArticleInfoResponse,
 )
 
-data class Category(
+data class CategoryResponse(
     val id: Int,
     val category: String,
 )
 
-data class ArticleInfo(
+data class ArticleInfoResponse(
     val id: Int,
     val likes: Int,
     val views: Int,
