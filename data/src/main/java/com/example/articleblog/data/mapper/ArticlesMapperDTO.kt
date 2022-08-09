@@ -2,6 +2,7 @@ package com.example.articleblog.data.mapper
 
 import com.example.articleblog.data.source.remote.model.ArticleResponse
 import com.example.articleblog.data.source.remote.model.ArticlesResponse
+import com.example.articleblog.data.source.remote.model.CategoryResponse
 import com.example.articleblog.domain.model.ArticleDTO
 import com.example.articleblog.domain.model.ArticleInfoDTO
 import com.example.articleblog.domain.model.ArticlesDTO
@@ -30,4 +31,8 @@ object ArticlesMapperDTO {
                 views = articleResponse.articleInfo.views
             ),
         )
+    
+    fun categoryResponseListToDTO(categoryResponseList: List<CategoryResponse>) =
+        categoryResponseList.map { CategoryDTO(id = it.id, category = it.category) }
+    
 }
