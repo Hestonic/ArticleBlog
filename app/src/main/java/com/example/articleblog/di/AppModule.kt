@@ -6,6 +6,7 @@ import com.example.articleblog.ui.fragment.article_details.ArticleDetailsViewMod
 import com.example.articleblog.ui.fragment.articles.ArticlesViewModelFactory
 import com.example.articleblog.ui.fragment.login.LoginViewModelFactory
 import com.example.articleblog.ui.fragment.registration.RegistrationViewModelFactory
+import com.example.articleblog.ui.fragment.write_article.WriteArticleViewModelFactory
 import dagger.Module
 import dagger.Provides
 
@@ -35,5 +36,10 @@ class AppModule(val context: Context) {
     @Provides
     fun provideRegistrationViewModelFactory(registerUserUseCase: RegisterUserUseCase): RegistrationViewModelFactory {
         return RegistrationViewModelFactory(registerUserUseCase = registerUserUseCase)
+    }
+    
+    @Provides
+    fun provideWriteArticleViewModelFactory(getAllCategoriesUseCase: GetAllCategoriesUseCase): WriteArticleViewModelFactory {
+        return WriteArticleViewModelFactory(getAllCategoriesUseCase = getAllCategoriesUseCase)
     }
 }

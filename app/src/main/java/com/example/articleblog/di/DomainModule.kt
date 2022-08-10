@@ -20,6 +20,11 @@ class DomainModule {
     }
     
     @Provides
+    fun provideGetAllCategoriesUseCase(articlesRepository: ArticlesRepository): GetAllCategoriesUseCase {
+        return GetAllCategoriesUseCase(articlesRepository = articlesRepository)
+    }
+    
+    @Provides
     fun provideLoginUserUseCase(authorizationRepository: AuthorizationRepository): LoginUserUseCase {
         return LoginUserUseCase(authorizationRepository = authorizationRepository)
     }
