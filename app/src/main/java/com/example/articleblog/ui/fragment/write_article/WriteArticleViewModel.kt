@@ -13,15 +13,37 @@ import kotlinx.coroutines.launch
 class WriteArticleViewModel(private val getAllCategoriesUseCase: GetAllCategoriesUseCase) :
     ViewModel() {
     
-    private val _categoriesLiveData: MutableLiveData<List<CategoryUiModel>> = MutableLiveData()
-    val categoriesLiveData: LiveData<List<CategoryUiModel>> get() = _categoriesLiveData
+    private val _categoriesUiModelLiveData: MutableLiveData<List<CategoryUiModel>> =
+        MutableLiveData()
+    val categoriesUiModelLiveData: LiveData<List<CategoryUiModel>> get() = _categoriesUiModelLiveData
+    
+    private val _categoriesStringsLiveData: MutableLiveData<List<String>> = MutableLiveData()
+    val categoriesStringsLiveData: LiveData<List<String>> get() = _categoriesStringsLiveData
     
     fun getAllCategories() {
         viewModelScope.launch {
             val listCategoriesDTO = getAllCategoriesUseCase.getAllCategories()
             val listCategoriesUiModel =
                 ArticlesMapperUI.listCategoriesDtoToUiModel(listCategoriesDTO)
-            _categoriesLiveData.postValue(listCategoriesUiModel)
+            _categoriesUiModelLiveData.postValue(listCategoriesUiModel)
+        }
+    }
+    
+    fun addCategory(category: String) {
+        val categoriesList = _categoriesStringsLiveData.value
+        if (categoriesList == null) _categoriesStringsLiveData.postValue(listOf(category))
+        else {
+            val categoriesMutableList = categoriesList.toMutableList()
+            categoriesMutableList.add(category)
+            _categoriesStringsLiveData.postValue(categoriesMutableList.distinct())
+        }
+    }
+    
+    fun deleteCategory(category: String) {
+        _categoriesStringsLiveData.value?.let { categoriesList ->
+            val categoriesMutableList = categoriesList.toMutableList()
+            categoriesMutableList.remove(category)
+            _categoriesStringsLiveData.postValue(categoriesMutableList)
         }
     }
 }
