@@ -28,6 +28,7 @@ object ArticlesMapperDTO {
                 likes = articleResponse.articleInfo.likes,
                 views = articleResponse.articleInfo.views
             ),
+            author = articleResponse.author
         )
     
     fun categoryResponseListToDTO(categoryResponseList: List<CategoryResponse>) =

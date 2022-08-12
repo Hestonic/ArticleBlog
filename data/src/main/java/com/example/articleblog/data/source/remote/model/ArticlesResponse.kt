@@ -10,6 +10,7 @@ data class ArticleResponse(
     val text: String,
     val categories: List<CategoryResponse>,
     val articleInfo: ArticleInfoResponse,
+    val author: String,
 )
 
 data class CategoryResponse(

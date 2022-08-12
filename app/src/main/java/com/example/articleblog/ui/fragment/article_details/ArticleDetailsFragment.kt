@@ -67,6 +67,7 @@ class ArticleDetailsFragment : Fragment() {
         binding.text.text = articleUiModel.text
         binding.likeValue.text = articleUiModel.articleInfo.likes
         binding.eyeValue.text = articleUiModel.articleInfo.views
+        binding.author.text = articleUiModel.author
     }
     
     private fun initViewModel() {

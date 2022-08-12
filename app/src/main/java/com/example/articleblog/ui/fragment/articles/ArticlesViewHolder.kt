@@ -13,6 +13,7 @@ class ArticlesViewHolder (private val binding: ItemArticleBinding) :
         binding.eyeValue.text = article.articleInfo.views
         binding.likeValue.text = article.articleInfo.likes
         binding.categories.text = article.categories.first().category
+        binding.author.text = article.author
     
         itemView.setOnClickListener { navigateToArticleDetailsFragment(article.id) }
     }

@@ -24,6 +24,7 @@ object ArticlesMapperUI {
             likes = articleDTO.articleInfo.likes.toString(),
             views = articleDTO.articleInfo.views.toString()
         ),
+        author = articleDTO.author
     )
     
     fun listCategoriesDtoToUiModel(listCategoriesDTO: List<CategoryDTO>) =

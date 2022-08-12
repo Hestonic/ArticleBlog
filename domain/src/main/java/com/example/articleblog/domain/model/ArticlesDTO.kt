@@ -10,6 +10,7 @@ data class ArticleDTO(
     val text: String,
     val categories: List<CategoryDTO>,
     val articleInfo: ArticleInfoDTO,
+    val author: String,
 )
 
 data class CategoryDTO(
