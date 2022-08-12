@@ -31,14 +31,20 @@ object ArticlesMapperUI {
         listCategoriesDTO.map { CategoryUiModel(id = it.id, category = it.category) }
     
     fun mapWriteArticleUiModel(
-        title: String, text: String, idsOfSelectedCategories: List<Int>
-    ) = WriteArticleUiModel(title = title, text = text, categories = idsOfSelectedCategories)
+        title: String, text: String, idsOfSelectedCategories: List<Int>, author: String
+    ) = WriteArticleUiModel(
+        title = title,
+        text = text,
+        categories = idsOfSelectedCategories,
+        author = author
+    )
     
     fun writeArticleUiModelToDTO(writeArticleUiModel: WriteArticleUiModel) =
         WriteArticleDTO(
             title = writeArticleUiModel.title,
             text = writeArticleUiModel.text,
-            categories = writeArticleUiModel.categories
+            categories = writeArticleUiModel.categories,
+            author = writeArticleUiModel.author,
         )
     
     

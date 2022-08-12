@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.articleblog.domain.usecase.GetAllCategoriesUseCase
+import com.example.articleblog.domain.usecase.GetLoginUseCase
 import com.example.articleblog.domain.usecase.PublishArticleUseCase
 import com.example.articleblog.ui.mapper.ArticlesMapperUI
 import com.example.articleblog.ui.model.CategoryUiModel
@@ -15,9 +16,11 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
 // TODO: собщение об ошибке в случае неудачного запроса
+// TODO: додумать логику с взятием логина
 class WriteArticleViewModel(
     private val getAllCategoriesUseCase: GetAllCategoriesUseCase,
-    private val publishArticleUseCase: PublishArticleUseCase
+    private val publishArticleUseCase: PublishArticleUseCase,
+    private val getLoginUseCase: GetLoginUseCase,
 ) :
     ViewModel() {
     
@@ -27,6 +30,8 @@ class WriteArticleViewModel(
     
     private val _categoriesStringsLiveData: MutableLiveData<List<String>> = MutableLiveData()
     val categoriesStringsLiveData: LiveData<List<String>> get() = _categoriesStringsLiveData
+    
+    private lateinit var login: String
     
     private val failedChannel = Channel<String>()
     val failedFlow get() = failedChannel.receiveAsFlow()
@@ -69,7 +74,12 @@ class WriteArticleViewModel(
                 val idsOfSelectedCategories =
                     findIdsOfSelectedCategories(categoriesUiModel, categories)
                 val writeArticleUiModel =
-                    ArticlesMapperUI.mapWriteArticleUiModel(title, text, idsOfSelectedCategories)
+                    ArticlesMapperUI.mapWriteArticleUiModel(
+                        title,
+                        text,
+                        idsOfSelectedCategories,
+                        login
+                    )
                 val writeArticleDTO = ArticlesMapperUI.writeArticleUiModelToDTO(writeArticleUiModel)
                 val message = publishArticleUseCase.publishArticle(writeArticleDTO)
                 Log.d("tag", message)
@@ -78,6 +88,12 @@ class WriteArticleViewModel(
                     else -> failedChannel.send("The article has not been published. Perhaps a problem with the server. Try again later")
                 }
             }
+        }
+    }
+    
+    fun getLogin(token: String) {
+        viewModelScope.launch {
+            login = getLoginUseCase.getLogin(token)
         }
     }
     
@@ -103,13 +119,9 @@ class WriteArticleViewModel(
     }
     
     private fun textIsValid(text: String): Boolean {
-        return if (text.isNotEmpty()) true
-        else if (text.length < 100) {
-            viewModelScope.launch { failedChannel.send("The text of the article must contain at least 100 characters") }
-            false
-        }
+        return if (text.length > 100) true
         else {
-            viewModelScope.launch { failedChannel.send("Write something in the article") }
+            viewModelScope.launch { failedChannel.send("The text of the article must contain at least 100 characters") }
             false
         }
     }
@@ -117,7 +129,7 @@ class WriteArticleViewModel(
     private fun titleIsValid(title: String): Boolean {
         return if (title.isNotEmpty()) true
         else if (title.length < 8) {
-            viewModelScope.launch { failedChannel.send("The text of the article must contain at least 8 characters") }
+            viewModelScope.launch { failedChannel.send("The tittle of the article must contain at least 8 characters") }
             false
         }
         else {
