@@ -3,7 +3,6 @@ package com.example.articleblog.data.source
 import android.util.Log
 import com.example.articleblog.data.source.remote.ArticleService
 import com.example.articleblog.data.source.remote.model.*
-import retrofit2.Response
 
 class RemoteDataSource(private val api: ArticleService) {
     
@@ -29,34 +28,14 @@ class RemoteDataSource(private val api: ArticleService) {
         }
     }
     
-    suspend fun loginUser(loginRequest: LoginRequest): TokenResponse {
+    suspend fun loginUser(loginRequest: LoginRequest): String {
         val tokenResponse = api.loginUser(loginRequest)
-        return if (tokenResponse.isSuccessful) {
-            Log.d("response", tokenResponse.body().toString())
-            tokenResponse.body()!!
-        } else {
-            Log.d("response", tokenResponse.message())
-            TokenResponse(
-                token = "",
-                isError = true,
-                errorMessage = tokenResponse.message()
-            )
-        }
+        return tokenResponse.body()?.token ?: tokenResponse.message()
     }
     
-    suspend fun registerUser(registerRequest: RegisterRequest): TokenResponse {
+    suspend fun registerUser(registerRequest: RegisterRequest): String {
         val tokenResponse = api.registerUser(registerRequest)
-        return if (tokenResponse.isSuccessful) {
-            Log.d("response", tokenResponse.body().toString())
-            tokenResponse.body()!!
-        } else {
-            Log.d("response", tokenResponse.errorBody().toString())
-            TokenResponse(
-                token = "",
-                isError = true,
-                errorMessage = tokenResponse.message()
-            )
-        }
+        return tokenResponse.body()?.token ?: tokenResponse.message()
     }
     
     suspend fun getAllCategories(): List<CategoryResponse> {

@@ -1,6 +1,5 @@
 package com.example.articleblog.ui.fragment.registration
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,7 +7,9 @@ import androidx.lifecycle.viewModelScope
 import com.example.articleblog.domain.usecase.RegisterUserUseCase
 import com.example.articleblog.ui.mapper.AuthorizationMapperUI
 import com.example.articleblog.ui.model.RegisterUiModel
-import com.example.articleblog.utils.Constants
+import com.example.articleblog.utils.Constants.Companion.BAD_REQUEST
+import com.example.articleblog.utils.Constants.Companion.CONFLICT
+import com.example.articleblog.utils.Constants.Companion.NOT_FOUND
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
@@ -23,32 +24,26 @@ class RegistrationViewModel(private val registerUserUseCase: RegisterUserUseCase
     
     fun loginUser(login: String, password: String, passwordRepeat: String) {
         viewModelScope.launch {
-            try {
-                val registerUiModel =
-                    AuthorizationMapperUI.mapRegisterUiModel(
-                        login = login,
-                        password = password,
-                        passwordRepeat = passwordRepeat
-                    )
-                Log.d("registerUiModel", registerUiModel.toString())
-                if (isValid(registerUiModel)) {
-                    val registerDTO = AuthorizationMapperUI.mapRegisterUiModelToDTO(registerUiModel)
-                    val tokenDTO = registerUserUseCase.registerUser(registerDTO)
-                    if (tokenDTO.isError) sendError(tokenDTO.errorMessage)
-                    else _tokenLiveData.postValue(tokenDTO.token)
-                }
-            } catch (e: Exception) {
-                e.printStackTrace().toString()
-                registerFailedChannel.send("Ошибка соединения с сервером")
-            }
-        }
-    }
     
-    private fun sendError(errorMessage: String) {
-        viewModelScope.launch {
-            when (errorMessage) {
-                Constants.NOT_FOUND -> registerFailedChannel.send("Ошибка соединения с сервером")
-                Constants.BAD_REQUEST -> registerFailedChannel.send("Неверный логин или пароль")
+            val registerUiModel = AuthorizationMapperUI.mapRegisterUiModel(
+                login = login,
+                password = password,
+                passwordRepeat = passwordRepeat
+            )
+            if (isValid(registerUiModel)) {
+                val registerDTO = AuthorizationMapperUI.mapRegisterUiModelToDTO(registerUiModel)
+                val token = registerUserUseCase.registerUser(registerDTO)
+                try {
+                    when (token) {
+                        BAD_REQUEST -> registerFailedChannel.send("Can't create user")
+                        CONFLICT -> registerFailedChannel.send("User already exists")
+                        NOT_FOUND -> registerFailedChannel.send("Server connection error. Check internet connections ")
+                        else -> _tokenLiveData.postValue(token)
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    registerFailedChannel.send("Server error. Try again later")
+                }
             }
         }
     }

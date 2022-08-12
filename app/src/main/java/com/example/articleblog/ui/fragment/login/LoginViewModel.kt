@@ -22,25 +22,18 @@ class LoginViewModel(private val loginUserUseCase: LoginUserUseCase) : ViewModel
     
     fun loginUser(login: String, password: String) {
         viewModelScope.launch {
+            val loginUiModel =
+                AuthorizationMapperUI.mapLoginUiModel(login = login, password = password)
+            val loginDTO = AuthorizationMapperUI.mapLoginUiModelToDTO(loginUiModel)
+            val token = loginUserUseCase.loginUser(loginDTO)
             try {
-                val loginUiModel =
-                    AuthorizationMapperUI.mapLoginUiModel(login = login, password = password)
-                val loginDTO = AuthorizationMapperUI.mapLoginUiModelToDTO(loginUiModel)
-                val tokenDTO = loginUserUseCase.loginUser(loginDTO)
-                if (tokenDTO.isError) sendError(tokenDTO.errorMessage)
-                else _tokenLiveData.postValue(tokenDTO.token)
+                when (token) {
+                    BAD_REQUEST -> loginFailedChannel.send("Wrong login or password")
+                    NOT_FOUND -> loginFailedChannel.send("Server connection error. Check internet connections ")
+                    else -> _tokenLiveData.postValue(token)
+                }
             } catch (e: Exception) {
-                e.printStackTrace().toString()
-                loginFailedChannel.send("Ошибка соединения с сервером")
-            }
-        }
-    }
-    
-    private fun sendError(errorMessage: String) {
-        viewModelScope.launch {
-            when(errorMessage) {
-                NOT_FOUND -> loginFailedChannel.send("Ошибка соединения с сервером")
-                BAD_REQUEST -> loginFailedChannel.send("Неверный логин или пароль")
+                loginFailedChannel.send("Server error. Try again later")
             }
         }
     }

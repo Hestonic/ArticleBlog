@@ -18,10 +18,10 @@ interface ArticleService {
     suspend fun getAllCategories(): Response<List<CategoryResponse>>
     
     @POST("/api/login")
-    suspend fun loginUser(@Body request: LoginRequest): Response<TokenResponse>
+    suspend fun loginUser(@Body request: LoginRequest): Response<TokenRemote>
     
     @POST("/api/register")
-    suspend fun registerUser(@Body request: RegisterRequest): Response<TokenResponse>
+    suspend fun registerUser(@Body request: RegisterRequest): Response<TokenRemote>
     
     @POST("/api/articles/add")
     suspend fun publishArticle(@Body request: ArticleRequest): Response<Void>
