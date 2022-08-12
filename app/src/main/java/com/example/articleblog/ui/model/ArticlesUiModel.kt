@@ -6,7 +6,7 @@ data class ArticlesUiModel(
 
 data class ArticleUiModel(
     val id: Int,
-    val tittle: String,
+    val title: String,
     val text: String,
     val categories: List<CategoryUiModel>,
     val articleInfo: ArticleInfoUiModel,
@@ -27,7 +27,7 @@ object Articles {
     val articleList = listOf(
         ArticleUiModel(
             id = 1,
-            tittle = "Ричард великий",
+            title = "Ричард великий",
             text = "Его брат Ричард, в начале XVI века бежали ко двору императора СвященнойРимской империи, став пешками в международной политике. Существовали также другие родас таким прозванием, но неизвестно, находятся ли они в родстве",
             categories = listOf(
                 CategoryUiModel(id = 1, category = "History"),
@@ -38,7 +38,7 @@ object Articles {
         ),
         ArticleUiModel(
             id = 1,
-            tittle = "Ричард великий",
+            title = "Ричард великий",
             text = "Его брат Ричард, в начале XVI века бежали ко двору императора СвященнойРимской империи, став пешками в международной политике. Существовали также другие родас таким прозванием, но неизвестно, находятся ли они в родстве",
             categories = listOf(
                 CategoryUiModel(id = 1, category = "History"),
@@ -49,7 +49,7 @@ object Articles {
         ),
         ArticleUiModel(
             id = 1,
-            tittle = "Ричард великий",
+            title = "Ричард великий",
             text = "Его брат Ричард, в начале XVI века бежали ко двору императора СвященнойРимской империи, став пешками в международной политике. Существовали также другие родас таким прозванием, но неизвестно, находятся ли они в родстве",
             categories = listOf(
                 CategoryUiModel(id = 1, category = "History"),
@@ -60,7 +60,7 @@ object Articles {
         ),
         ArticleUiModel(
             id = 1,
-            tittle = "Ричард великий",
+            title = "Ричард великий",
             text = "Его брат Ричард, в начале XVI века бежали ко двору императора СвященнойРимской империи, став пешками в международной политике. Существовали также другие родас таким прозванием, но неизвестно, находятся ли они в родстве",
             categories = listOf(
                 CategoryUiModel(id = 1, category = "History"),
@@ -71,7 +71,7 @@ object Articles {
         ),
         ArticleUiModel(
             id = 1,
-            tittle = "Ричард великий",
+            title = "Ричард великий",
             text = "Его брат Ричард, в начале XVI века бежали ко двору императора СвященнойРимской империи, став пешками в международной политике. Существовали также другие родас таким прозванием, но неизвестно, находятся ли они в родстве",
             categories = listOf(
                 CategoryUiModel(id = 1, category = "History"),
@@ -82,7 +82,7 @@ object Articles {
         ),
         ArticleUiModel(
             id = 1,
-            tittle = "Ричард великий",
+            title = "Ричард великий",
             text = "Его брат Ричард, в начале XVI века бежали ко двору императора СвященнойРимской империи, став пешками в международной политике. Существовали также другие родас таким прозванием, но неизвестно, находятся ли они в родстве",
             categories = listOf(
                 CategoryUiModel(id = 1, category = "History"),
