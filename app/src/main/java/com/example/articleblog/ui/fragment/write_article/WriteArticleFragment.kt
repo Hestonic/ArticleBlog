@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.articleblog.App
 import com.example.articleblog.R
+import com.example.articleblog.data.source.local.SessionManager
 import com.example.articleblog.databinding.FragmentWriteArticleBinding
 import com.example.articleblog.ui.model.CategoryUiModel
 import javax.inject.Inject
@@ -26,12 +27,15 @@ class WriteArticleFragment : Fragment(), WriteArticlePassClick {
     lateinit var viewModel: WriteArticleViewModel
     private val adapter = WriteArticleAdapter(this)
     private lateinit var binding: FragmentWriteArticleBinding
+    @Inject
+    lateinit var sessionManager: SessionManager
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         (requireContext().applicationContext as App).appComponent.inject(this)
         initViewModel()
         viewModel.getAllCategories()
+        viewModel.getLogin(sessionManager.getAuthToken()!!) // TODO: null safety
     }
     
     override fun onCreateView(
@@ -64,10 +68,7 @@ class WriteArticleFragment : Fragment(), WriteArticlePassClick {
             }
         }
         
-        binding.publishButton.setOnClickListener {
-            showPublishAlertDialog()
-            publishArticle()
-        }
+        binding.publishButton.setOnClickListener { showPublishAlertDialog() }
         
         return binding.root
     }
