@@ -3,6 +3,7 @@ package com.example.articleblog.data.source
 import android.util.Log
 import com.example.articleblog.data.source.remote.ArticleService
 import com.example.articleblog.data.source.remote.model.*
+import retrofit2.Response
 
 class RemoteDataSource(private val api: ArticleService) {
     
@@ -67,5 +68,9 @@ class RemoteDataSource(private val api: ArticleService) {
             Log.d("response", categoryResponse.errorBody().toString())
             emptyList()
         }
+    }
+    
+    suspend fun publishArticle(articleRequest: ArticleRequest): String {
+        return api.publishArticle(articleRequest).message()
     }
 }

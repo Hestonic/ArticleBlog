@@ -22,4 +22,7 @@ interface ArticleService {
     
     @POST("/api/register")
     suspend fun registerUser(@Body request: RegisterRequest): Response<TokenResponse>
+    
+    @POST("/api/articles/add")
+    suspend fun publishArticle(@Body request: ArticleRequest): Response<Void>
 }

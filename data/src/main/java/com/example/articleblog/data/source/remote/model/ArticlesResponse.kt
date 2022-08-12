@@ -6,7 +6,7 @@ data class ArticlesResponse(
 
 data class ArticleResponse(
     val id: Int,
-    val tittle: String,
+    val title: String,
     val text: String,
     val categories: List<CategoryResponse>,
     val articleInfo: ArticleInfoResponse,
