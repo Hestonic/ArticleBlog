@@ -63,7 +63,7 @@ class ArticleDetailsFragment : Fragment() {
     }
     
     private fun setUi(articleUiModel: ArticleUiModel) {
-        binding.title.text = articleUiModel.tittle
+        binding.title.text = articleUiModel.title
         binding.text.text = articleUiModel.text
         binding.likeValue.text = articleUiModel.articleInfo.likes
         binding.eyeValue.text = articleUiModel.articleInfo.views
