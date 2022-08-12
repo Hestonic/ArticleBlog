@@ -49,8 +49,8 @@ class LoginFragment : Fragment() {
     }
     
     private fun loginUser() {
-        val login = binding.loginInput.text.toString()
-        val password = binding.passwordInput.text.toString()
+        val login = binding.loginInput.text.toString().trim()
+        val password = binding.passwordInput.text.toString().trim()
         viewModel.loginUser(login = login, password = password)
     }
     

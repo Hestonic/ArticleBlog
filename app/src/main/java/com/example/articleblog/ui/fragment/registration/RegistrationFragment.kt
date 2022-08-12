@@ -49,9 +49,9 @@ class RegistrationFragment : Fragment() {
     }
     
     private fun registerUser() {
-        val login = binding.loginInput.text.toString()
-        val password = binding.passwordInput.text.toString()
-        val passwordRepeat = binding.passwordRepeatInput.text.toString()
+        val login = binding.loginInput.text.toString().trim()
+        val password = binding.passwordInput.text.toString().trim()
+        val passwordRepeat = binding.passwordRepeatInput.text.toString().trim()
         viewModel.loginUser(login, password, passwordRepeat)
     }
     
