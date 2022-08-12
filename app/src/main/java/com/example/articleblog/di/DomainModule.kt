@@ -33,4 +33,9 @@ class DomainModule {
     fun provideRegisterUserUseCase(authorizationRepository: AuthorizationRepository): RegisterUserUseCase {
         return RegisterUserUseCase(authorizationRepository = authorizationRepository)
     }
+    
+    @Provides
+    fun providePublishArticleUseCase(articlesRepository: ArticlesRepository): PublishArticleUseCase {
+        return PublishArticleUseCase(articlesRepository = articlesRepository)
+    }
 }
