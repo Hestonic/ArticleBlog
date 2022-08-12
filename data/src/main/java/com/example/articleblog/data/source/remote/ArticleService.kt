@@ -24,5 +24,8 @@ interface ArticleService {
     suspend fun registerUser(@Body request: RegisterRequest): Response<TokenRemote>
     
     @POST("/api/articles/add")
-    suspend fun publishArticle(@Body request: ArticleRequest): Response<Void>
+    suspend fun publishArticle(@Body request: WriteArticleRequest): Response<Void>
+    
+    @POST("/api/session")
+    suspend fun getLogin(@Body request: TokenRemote): Response<LoginResponse>
 }

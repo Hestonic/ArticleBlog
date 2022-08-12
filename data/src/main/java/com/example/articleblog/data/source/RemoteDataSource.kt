@@ -49,7 +49,12 @@ class RemoteDataSource(private val api: ArticleService) {
         }
     }
     
-    suspend fun publishArticle(articleRequest: ArticleRequest): String {
+    suspend fun publishArticle(articleRequest: WriteArticleRequest): String {
         return api.publishArticle(articleRequest).message()
+    }
+    
+    suspend fun getLogin(tokenRequest: TokenRemote): String {
+        val response = api.getLogin(tokenRequest)
+        return response.body()?.login ?: response.message()
     }
 }
