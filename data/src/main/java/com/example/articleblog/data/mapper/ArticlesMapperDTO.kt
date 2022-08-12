@@ -1,12 +1,10 @@
 package com.example.articleblog.data.mapper
 
+import com.example.articleblog.data.source.remote.model.ArticleRequest
 import com.example.articleblog.data.source.remote.model.ArticleResponse
 import com.example.articleblog.data.source.remote.model.ArticlesResponse
 import com.example.articleblog.data.source.remote.model.CategoryResponse
-import com.example.articleblog.domain.model.ArticleDTO
-import com.example.articleblog.domain.model.ArticleInfoDTO
-import com.example.articleblog.domain.model.ArticlesDTO
-import com.example.articleblog.domain.model.CategoryDTO
+import com.example.articleblog.domain.model.*
 
 object ArticlesMapperDTO {
     
@@ -20,7 +18,7 @@ object ArticlesMapperDTO {
     fun articleResponseToDTO(articleResponse: ArticleResponse) =
         ArticleDTO(
             id = articleResponse.id,
-            tittle = articleResponse.tittle,
+            title = articleResponse.title,
             text = articleResponse.text,
             categories = articleResponse.categories.map { categoryResponse ->
                 CategoryDTO(id = categoryResponse.id, category = categoryResponse.category)
@@ -34,5 +32,12 @@ object ArticlesMapperDTO {
     
     fun categoryResponseListToDTO(categoryResponseList: List<CategoryResponse>) =
         categoryResponseList.map { CategoryDTO(id = it.id, category = it.category) }
+    
+    fun writeArticleDtoToRequest(writeArticleDTO: WriteArticleDTO) =
+        ArticleRequest(
+            title = writeArticleDTO.title,
+            text = writeArticleDTO.text,
+            categories = writeArticleDTO.categories,
+        )
     
 }

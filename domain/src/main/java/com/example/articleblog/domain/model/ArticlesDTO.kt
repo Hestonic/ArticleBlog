@@ -6,7 +6,7 @@ data class ArticlesDTO(
 
 data class ArticleDTO(
     val id: Int,
-    val tittle: String,
+    val title: String,
     val text: String,
     val categories: List<CategoryDTO>,
     val articleInfo: ArticleInfoDTO,
