@@ -41,11 +41,13 @@ class AppModule(val context: Context) {
     @Provides
     fun provideWriteArticleViewModelFactory(
         getAllCategoriesUseCase: GetAllCategoriesUseCase,
-        publishArticleUseCase: PublishArticleUseCase
+        publishArticleUseCase: PublishArticleUseCase,
+        getLoginUseCase: GetLoginUseCase,
     ): WriteArticleViewModelFactory {
         return WriteArticleViewModelFactory(
             getAllCategoriesUseCase = getAllCategoriesUseCase,
-            publishArticleUseCase = publishArticleUseCase
+            publishArticleUseCase = publishArticleUseCase,
+            getLoginUseCase = getLoginUseCase,
         )
     }
 }
