@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">Article Blog</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="registration"><u>Registration</u></string>
+    <string name="log_in">Log in</string>
+    <string name="log_in_underline"><u>Log in</u></string>
+    <string name="register">Register</string>
+    <string name="email">Email</string>
+    <string name="article_name">Article Name</string>
+    <string name="text">Его брат Ричард, в начале XVI века бежали ко двору императора СвященнойРимской империи, став пешками в международной политике. Существовали также другие родас таким прозванием, но неизвестно, находятся ли они в родстве.</string>
+    <string name="eye_value">115</string>
+    <string name="like_value">24</string>
+    <string name="category_underline"><u>Category</u></string>
+    <string name="category">Category</string>
+    <string name="read"><u>Details…</u></string>
+    <string name="like_value_label">Likes value</string>
+    <string name="eye_value_label">Views value</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="author_label">Author:</string>
+    <string name="add_article_button">Add article button</string>
+    <string name="title">Title</string>
+    <string name="write_your_article_here">Write your article here…</string>
+    <string name="exit">Exit</string>
+    <string name="log_out">Log out</string>
+    <string name="save">Save</string>
+    <string name="publish">publish</string>
+    <string name="select_categories">Select categories</string>
 </resources>

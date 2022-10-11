@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.articleblog.ui.fragment.login.LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+        <action
+            app:popUpTo="@+id/navigation_graph"
+            app:popUpToInclusive="true"
+            android:id="@+id/action_loginFragment_to_articlesFragment"
+            app:destination="@id/articlesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="com.example.articleblog.ui.fragment.registration.RegistrationFragment"
+        android:label="RegistrationFragment" >
+        <action
+            android:id="@+id/action_registrationFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            app:popUpTo="@+id/navigation_graph"
+            app:popUpToInclusive="true"
+            android:id="@+id/action_registrationFragment_to_articlesFragment"
+            app:destination="@id/articlesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/articlesFragment"
+        android:name="com.example.articleblog.ui.fragment.articles.ArticlesFragment"
+        android:label="ArticlesFragment" >
+        <action
+            android:id="@+id/action_articlesFragment_to_writeArticleFragment"
+            app:destination="@id/writeArticleFragment" />
+        <action
+            android:id="@+id/action_articlesFragment_to_articleDetailsFragment"
+            app:destination="@id/articleDetailsFragment" />
+        <action
+            app:popUpTo="@+id/navigation_graph"
+            app:popUpToInclusive="true"
+            android:id="@+id/action_articlesFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/articleDetailsFragment"
+        android:name="com.example.articleblog.ui.fragment.article_details.ArticleDetailsFragment"
+        android:label="ArticleDetailsFragment" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/writeArticleFragment"
+        android:name="com.example.articleblog.ui.fragment.write_article.WriteArticleFragment"
+        android:label="fragment_write_article"
+        tools:layout="@layout/fragment_write_article" >
+        <action
+            android:id="@+id/action_writeArticleFragment_to_articlesFragment"
+            app:destination="@id/articlesFragment" />
+    </fragment>
+</navigation>
